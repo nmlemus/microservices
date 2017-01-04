@@ -31,6 +31,7 @@ dependencyManagement {
 }
 
 dependencies {
+	compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"

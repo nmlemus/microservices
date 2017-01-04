@@ -3,6 +3,9 @@ package devices.ms
 class UrlMappings {
 
     static mappings = {
+		
+		"/api/devices"(resources:"device")
+		
         delete "/$controller/$id(.$format)?"(action:"delete")
         get "/$controller(.$format)?"(action:"index")
         get "/$controller/$id(.$format)?"(action:"show")
