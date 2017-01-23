@@ -1,0 +1,78 @@
+<div>
+    <h2 data-translate="gatewayApp.device.home.title">Devices</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="device.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="gatewayApp.device.home.createLabel">
+                        Create new Device
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span data-translate="gatewayApp.device.model">Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="manufacturer"><span data-translate="gatewayApp.device.manufacturer">Manufacturer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="display"><span data-translate="gatewayApp.device.display">Display</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gcmToken"><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="androidVersion"><span data-translate="gatewayApp.device.androidVersion">Android Version</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="created"><span data-translate="gatewayApp.device.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="signedIn"><span data-translate="gatewayApp.device.signedIn">Signed In</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="appVersion"><span data-translate="gatewayApp.device.appVersion">App Version</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deviceId"><span data-translate="gatewayApp.device.deviceId">Device Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="os"><span data-translate="gatewayApp.device.os">Os</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="device in vm.devices track by device.id">
+                    <td><a ui-sref="device-detail({id:device.id})">{{device.id}}</a></td>
+                    <td>{{device.model}}</td>
+                    <td>{{device.manufacturer}}</td>
+                    <td>{{device.display}}</td>
+                    <td>{{device.gcmToken}}</td>
+                    <td>{{device.androidVersion}}</td>
+                    <td>{{device.created | date:'medium'}}</td>
+                    <td>{{device.signedIn}}</td>
+                    <td>{{device.appVersion}}</td>
+                    <td>{{device.deviceId}}</td>
+                    <td>{{device.os}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="device-detail({id:device.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="device.edit({id:device.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="device.delete({id:device.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

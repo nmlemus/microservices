@@ -1,0 +1,14 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "gateway",
+      "goblob",
+      "uaa"
+    ],
+    "directoryPath": "../",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka",
+    "adminPassword": "admin",
+    "jwtSecretKey": "fd7764db97fc4c93320e788d59b34cd2d830ac96"
+  }
+}

@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "model",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "manufacturer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "display",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gcmToken",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "androidVersion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "signedIn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appVersion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deviceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "os",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170123221637",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "device",
+    "pagination": "pagination",
+    "microserviceName": "goblob",
+    "searchEngine": false
+}

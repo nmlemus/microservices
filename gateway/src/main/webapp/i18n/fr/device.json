@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "device" : {
+            "home": {
+                "title": "Devices",
+                "createLabel": "Créer un nouveau Device",
+                "createOrEditLabel": "Créer ou éditer un Device",
+                "search": "Recherche pour Device"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Device {{ id }} ?"
+            },
+            "detail": {
+                "title": "Device"
+            },
+            "model": "Model",
+            "manufacturer": "Manufacturer",
+            "display": "Display",
+            "gcmToken": "Gcm Token",
+            "androidVersion": "Android Version",
+            "created": "Created",
+            "signedIn": "Signed In",
+            "appVersion": "App Version",
+            "deviceId": "Device Id",
+            "os": "Os"
+        }
+    },
+    "goblobApp": {
+        "device" : {
+            "created": "Un nouveau Device a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Device avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Device avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

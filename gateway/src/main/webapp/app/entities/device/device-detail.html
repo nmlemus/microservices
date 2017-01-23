@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="gatewayApp.device.detail.title">Device</span> {{vm.device.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="gatewayApp.device.model">Model</span></dt>
+        <dd>
+            <span>{{vm.device.model}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.manufacturer">Manufacturer</span></dt>
+        <dd>
+            <span>{{vm.device.manufacturer}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.display">Display</span></dt>
+        <dd>
+            <span>{{vm.device.display}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span></dt>
+        <dd>
+            <span>{{vm.device.gcmToken}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.androidVersion">Android Version</span></dt>
+        <dd>
+            <span>{{vm.device.androidVersion}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.created">Created</span></dt>
+        <dd>
+            <span>{{vm.device.created | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.signedIn">Signed In</span></dt>
+        <dd>
+            <span>{{vm.device.signedIn}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.appVersion">App Version</span></dt>
+        <dd>
+            <span>{{vm.device.appVersion}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.deviceId">Device Id</span></dt>
+        <dd>
+            <span>{{vm.device.deviceId}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.os">Os</span></dt>
+        <dd>
+            <span>{{vm.device.os}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="device-detail.edit({id:vm.device.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,12 @@
+version: '2'
+services:
+    goblob-postgresql:
+        container_name: goblob-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/goblob/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=goblob
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
