@@ -3,31 +3,23 @@
     "relationships": [],
     "fields": [
         {
+            "fieldName": "os",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "osVersion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "device",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "model",
             "fieldType": "String"
         },
         {
             "fieldName": "manufacturer",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "display",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "gcmToken",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "androidVersion",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "created",
-            "fieldType": "ZonedDateTime"
-        },
-        {
-            "fieldName": "signedIn",
             "fieldType": "String"
         },
         {
@@ -39,11 +31,35 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "os",
+            "fieldName": "gcmToken",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "signedIn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "display",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "product",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sdkVersion",
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170123221637",
+    "changelogDate": "20170123234011",
     "dto": "no",
     "service": "no",
     "entityTableName": "device",

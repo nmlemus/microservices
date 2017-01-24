@@ -3,7 +3,7 @@ package com.goblob.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -19,26 +19,20 @@ public class Device implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "os")
+    private String os;
+
+    @Column(name = "os_version")
+    private String osVersion;
+
+    @Column(name = "device")
+    private String device;
+
     @Column(name = "model")
     private String model;
 
     @Column(name = "manufacturer")
     private String manufacturer;
-
-    @Column(name = "display")
-    private String display;
-
-    @Column(name = "gcm_token")
-    private String gcmToken;
-
-    @Column(name = "android_version")
-    private String androidVersion;
-
-    @Column(name = "created")
-    private ZonedDateTime created;
-
-    @Column(name = "signed_in")
-    private String signedIn;
 
     @Column(name = "app_version")
     private String appVersion;
@@ -46,8 +40,26 @@ public class Device implements Serializable {
     @Column(name = "device_id")
     private String deviceId;
 
-    @Column(name = "os")
-    private String os;
+    @Column(name = "gcm_token")
+    private String gcmToken;
+
+    @Column(name = "created")
+    private LocalDate created;
+
+    @Column(name = "signed_in")
+    private LocalDate signedIn;
+
+    @Column(name = "display")
+    private String display;
+
+    @Column(name = "product")
+    private String product;
+
+    @Column(name = "serial")
+    private String serial;
+
+    @Column(name = "sdk_version")
+    private String sdkVersion;
 
     public Long getId() {
         return id;
@@ -55,6 +67,45 @@ public class Device implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public Device os(String os) {
+        this.os = os;
+        return this;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getOsVersion() {
+        return osVersion;
+    }
+
+    public Device osVersion(String osVersion) {
+        this.osVersion = osVersion;
+        return this;
+    }
+
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
+
+    public String getDevice() {
+        return device;
+    }
+
+    public Device device(String device) {
+        this.device = device;
+        return this;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
     }
 
     public String getModel() {
@@ -83,71 +134,6 @@ public class Device implements Serializable {
         this.manufacturer = manufacturer;
     }
 
-    public String getDisplay() {
-        return display;
-    }
-
-    public Device display(String display) {
-        this.display = display;
-        return this;
-    }
-
-    public void setDisplay(String display) {
-        this.display = display;
-    }
-
-    public String getGcmToken() {
-        return gcmToken;
-    }
-
-    public Device gcmToken(String gcmToken) {
-        this.gcmToken = gcmToken;
-        return this;
-    }
-
-    public void setGcmToken(String gcmToken) {
-        this.gcmToken = gcmToken;
-    }
-
-    public String getAndroidVersion() {
-        return androidVersion;
-    }
-
-    public Device androidVersion(String androidVersion) {
-        this.androidVersion = androidVersion;
-        return this;
-    }
-
-    public void setAndroidVersion(String androidVersion) {
-        this.androidVersion = androidVersion;
-    }
-
-    public ZonedDateTime getCreated() {
-        return created;
-    }
-
-    public Device created(ZonedDateTime created) {
-        this.created = created;
-        return this;
-    }
-
-    public void setCreated(ZonedDateTime created) {
-        this.created = created;
-    }
-
-    public String getSignedIn() {
-        return signedIn;
-    }
-
-    public Device signedIn(String signedIn) {
-        this.signedIn = signedIn;
-        return this;
-    }
-
-    public void setSignedIn(String signedIn) {
-        this.signedIn = signedIn;
-    }
-
     public String getAppVersion() {
         return appVersion;
     }
@@ -174,17 +160,95 @@ public class Device implements Serializable {
         this.deviceId = deviceId;
     }
 
-    public String getOs() {
-        return os;
+    public String getGcmToken() {
+        return gcmToken;
     }
 
-    public Device os(String os) {
-        this.os = os;
+    public Device gcmToken(String gcmToken) {
+        this.gcmToken = gcmToken;
         return this;
     }
 
-    public void setOs(String os) {
-        this.os = os;
+    public void setGcmToken(String gcmToken) {
+        this.gcmToken = gcmToken;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public Device created(LocalDate created) {
+        this.created = created;
+        return this;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    public LocalDate getSignedIn() {
+        return signedIn;
+    }
+
+    public Device signedIn(LocalDate signedIn) {
+        this.signedIn = signedIn;
+        return this;
+    }
+
+    public void setSignedIn(LocalDate signedIn) {
+        this.signedIn = signedIn;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public Device display(String display) {
+        this.display = display;
+        return this;
+    }
+
+    public void setDisplay(String display) {
+        this.display = display;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public Device product(String product) {
+        this.product = product;
+        return this;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public Device serial(String serial) {
+        this.serial = serial;
+        return this;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
+    public String getSdkVersion() {
+        return sdkVersion;
+    }
+
+    public Device sdkVersion(String sdkVersion) {
+        this.sdkVersion = sdkVersion;
+        return this;
+    }
+
+    public void setSdkVersion(String sdkVersion) {
+        this.sdkVersion = sdkVersion;
     }
 
     @Override
@@ -211,16 +275,20 @@ public class Device implements Serializable {
     public String toString() {
         return "Device{" +
             "id=" + id +
+            ", os='" + os + "'" +
+            ", osVersion='" + osVersion + "'" +
+            ", device='" + device + "'" +
             ", model='" + model + "'" +
             ", manufacturer='" + manufacturer + "'" +
-            ", display='" + display + "'" +
-            ", gcmToken='" + gcmToken + "'" +
-            ", androidVersion='" + androidVersion + "'" +
-            ", created='" + created + "'" +
-            ", signedIn='" + signedIn + "'" +
             ", appVersion='" + appVersion + "'" +
             ", deviceId='" + deviceId + "'" +
-            ", os='" + os + "'" +
+            ", gcmToken='" + gcmToken + "'" +
+            ", created='" + created + "'" +
+            ", signedIn='" + signedIn + "'" +
+            ", display='" + display + "'" +
+            ", product='" + product + "'" +
+            ", serial='" + serial + "'" +
+            ", sdkVersion='" + sdkVersion + "'" +
             '}';
     }
 }

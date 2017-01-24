@@ -80,7 +80,7 @@ class DeviceGatlingTest extends Simulation {
             .exec(http("Create new device")
             .post("/goblob/api/devices")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "model":"SAMPLE_TEXT", "manufacturer":"SAMPLE_TEXT", "display":"SAMPLE_TEXT", "gcmToken":"SAMPLE_TEXT", "androidVersion":"SAMPLE_TEXT", "created":"2020-01-01T00:00:00.000Z", "signedIn":"SAMPLE_TEXT", "appVersion":"SAMPLE_TEXT", "deviceId":"SAMPLE_TEXT", "os":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "os":"SAMPLE_TEXT", "osVersion":"SAMPLE_TEXT", "device":"SAMPLE_TEXT", "model":"SAMPLE_TEXT", "manufacturer":"SAMPLE_TEXT", "appVersion":"SAMPLE_TEXT", "deviceId":"SAMPLE_TEXT", "gcmToken":"SAMPLE_TEXT", "created":"2020-01-01T00:00:00.000Z", "signedIn":"2020-01-01T00:00:00.000Z", "display":"SAMPLE_TEXT", "product":"SAMPLE_TEXT", "serial":"SAMPLE_TEXT", "sdkVersion":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_device_url"))).exitHereIfFailed
             .pause(10)

@@ -13,16 +13,20 @@
             "detail": {
                 "title": "Device"
             },
+            "os": "Os",
+            "osVersion": "Os Version",
+            "device": "Device",
             "model": "Model",
             "manufacturer": "Manufacturer",
-            "display": "Display",
-            "gcmToken": "Gcm Token",
-            "androidVersion": "Android Version",
-            "created": "Created",
-            "signedIn": "Signed In",
             "appVersion": "App Version",
             "deviceId": "Device Id",
-            "os": "Os"
+            "gcmToken": "Gcm Token",
+            "created": "Created",
+            "signedIn": "Signed In",
+            "display": "Display",
+            "product": "Product",
+            "serial": "Serial",
+            "sdkVersion": "Sdk Version"
         }
     },
     "goblobApp": {

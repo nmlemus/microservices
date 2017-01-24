@@ -124,16 +124,20 @@
                     resolve: {
                         entity: function () {
                             return {
+                                os: null,
+                                osVersion: null,
+                                device: null,
                                 model: null,
                                 manufacturer: null,
-                                display: null,
-                                gcmToken: null,
-                                androidVersion: null,
-                                created: null,
-                                signedIn: null,
                                 appVersion: null,
                                 deviceId: null,
-                                os: null,
+                                gcmToken: null,
+                                created: null,
+                                signedIn: null,
+                                display: null,
+                                product: null,
+                                serial: null,
+                                sdkVersion: null,
                                 id: null
                             };
                         }

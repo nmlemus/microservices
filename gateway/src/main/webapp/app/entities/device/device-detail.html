@@ -4,6 +4,18 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="gatewayApp.device.os">Os</span></dt>
+        <dd>
+            <span>{{vm.device.os}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.osVersion">Os Version</span></dt>
+        <dd>
+            <span>{{vm.device.osVersion}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.device">Device</span></dt>
+        <dd>
+            <span>{{vm.device.device}}</span>
+        </dd>
         <dt><span data-translate="gatewayApp.device.model">Model</span></dt>
         <dd>
             <span>{{vm.device.model}}</span>
@@ -11,26 +23,6 @@
         <dt><span data-translate="gatewayApp.device.manufacturer">Manufacturer</span></dt>
         <dd>
             <span>{{vm.device.manufacturer}}</span>
-        </dd>
-        <dt><span data-translate="gatewayApp.device.display">Display</span></dt>
-        <dd>
-            <span>{{vm.device.display}}</span>
-        </dd>
-        <dt><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span></dt>
-        <dd>
-            <span>{{vm.device.gcmToken}}</span>
-        </dd>
-        <dt><span data-translate="gatewayApp.device.androidVersion">Android Version</span></dt>
-        <dd>
-            <span>{{vm.device.androidVersion}}</span>
-        </dd>
-        <dt><span data-translate="gatewayApp.device.created">Created</span></dt>
-        <dd>
-            <span>{{vm.device.created | date:'medium'}}</span>
-        </dd>
-        <dt><span data-translate="gatewayApp.device.signedIn">Signed In</span></dt>
-        <dd>
-            <span>{{vm.device.signedIn}}</span>
         </dd>
         <dt><span data-translate="gatewayApp.device.appVersion">App Version</span></dt>
         <dd>
@@ -40,9 +32,33 @@
         <dd>
             <span>{{vm.device.deviceId}}</span>
         </dd>
-        <dt><span data-translate="gatewayApp.device.os">Os</span></dt>
+        <dt><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span></dt>
         <dd>
-            <span>{{vm.device.os}}</span>
+            <span>{{vm.device.gcmToken}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.created">Created</span></dt>
+        <dd>
+            <span>{{vm.device.created | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.signedIn">Signed In</span></dt>
+        <dd>
+            <span>{{vm.device.signedIn | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.display">Display</span></dt>
+        <dd>
+            <span>{{vm.device.display}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.product">Product</span></dt>
+        <dd>
+            <span>{{vm.device.product}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.serial">Serial</span></dt>
+        <dd>
+            <span>{{vm.device.serial}}</span>
+        </dd>
+        <dt><span data-translate="gatewayApp.device.sdkVersion">Sdk Version</span></dt>
+        <dd>
+            <span>{{vm.device.sdkVersion}}</span>
         </dd>
     </dl>
 

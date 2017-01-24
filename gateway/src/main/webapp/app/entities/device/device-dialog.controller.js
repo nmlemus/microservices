@@ -44,6 +44,7 @@
         }
 
         vm.datePickerOpenStatus.created = false;
+        vm.datePickerOpenStatus.signedIn = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

@@ -19,32 +19,40 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="os"><span data-translate="gatewayApp.device.os">Os</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="osVersion"><span data-translate="gatewayApp.device.osVersion">Os Version</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="device"><span data-translate="gatewayApp.device.device">Device</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="model"><span data-translate="gatewayApp.device.model">Model</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="manufacturer"><span data-translate="gatewayApp.device.manufacturer">Manufacturer</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="display"><span data-translate="gatewayApp.device.display">Display</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="gcmToken"><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="androidVersion"><span data-translate="gatewayApp.device.androidVersion">Android Version</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="created"><span data-translate="gatewayApp.device.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="signedIn"><span data-translate="gatewayApp.device.signedIn">Signed In</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="appVersion"><span data-translate="gatewayApp.device.appVersion">App Version</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="deviceId"><span data-translate="gatewayApp.device.deviceId">Device Id</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="os"><span data-translate="gatewayApp.device.os">Os</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gcmToken"><span data-translate="gatewayApp.device.gcmToken">Gcm Token</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="created"><span data-translate="gatewayApp.device.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="signedIn"><span data-translate="gatewayApp.device.signedIn">Signed In</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="display"><span data-translate="gatewayApp.device.display">Display</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="product"><span data-translate="gatewayApp.device.product">Product</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="serial"><span data-translate="gatewayApp.device.serial">Serial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sdkVersion"><span data-translate="gatewayApp.device.sdkVersion">Sdk Version</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="device in vm.devices track by device.id">
                     <td><a ui-sref="device-detail({id:device.id})">{{device.id}}</a></td>
+                    <td>{{device.os}}</td>
+                    <td>{{device.osVersion}}</td>
+                    <td>{{device.device}}</td>
                     <td>{{device.model}}</td>
                     <td>{{device.manufacturer}}</td>
-                    <td>{{device.display}}</td>
-                    <td>{{device.gcmToken}}</td>
-                    <td>{{device.androidVersion}}</td>
-                    <td>{{device.created | date:'medium'}}</td>
-                    <td>{{device.signedIn}}</td>
                     <td>{{device.appVersion}}</td>
                     <td>{{device.deviceId}}</td>
-                    <td>{{device.os}}</td>
+                    <td>{{device.gcmToken}}</td>
+                        <td>{{device.created | date:'mediumDate'}}</td>
+                        <td>{{device.signedIn | date:'mediumDate'}}</td>
+                    <td>{{device.display}}</td>
+                    <td>{{device.product}}</td>
+                    <td>{{device.serial}}</td>
+                    <td>{{device.sdkVersion}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

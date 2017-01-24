@@ -14,6 +14,24 @@
                     ng-model="vm.device.id" readonly />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.os" for="field_os">Os</label>
+            <input type="text" class="form-control" name="os" id="field_os"
+                    ng-model="vm.device.os"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.osVersion" for="field_osVersion">Os Version</label>
+            <input type="text" class="form-control" name="osVersion" id="field_osVersion"
+                    ng-model="vm.device.osVersion"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.device" for="field_device">Device</label>
+            <input type="text" class="form-control" name="device" id="field_device"
+                    ng-model="vm.device.device"
+                     />
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="gatewayApp.device.model" for="field_model">Model</label>
             <input type="text" class="form-control" name="model" id="field_model"
                     ng-model="vm.device.model"
@@ -23,40 +41,6 @@
             <label class="control-label" data-translate="gatewayApp.device.manufacturer" for="field_manufacturer">Manufacturer</label>
             <input type="text" class="form-control" name="manufacturer" id="field_manufacturer"
                     ng-model="vm.device.manufacturer"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.display" for="field_display">Display</label>
-            <input type="text" class="form-control" name="display" id="field_display"
-                    ng-model="vm.device.display"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.gcmToken" for="field_gcmToken">Gcm Token</label>
-            <input type="text" class="form-control" name="gcmToken" id="field_gcmToken"
-                    ng-model="vm.device.gcmToken"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.androidVersion" for="field_androidVersion">Android Version</label>
-            <input type="text" class="form-control" name="androidVersion" id="field_androidVersion"
-                    ng-model="vm.device.androidVersion"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.created" for="field_created">Created</label>
-                <div class="input-group">
-                    <input id="field_created" type="text" class="form-control" name="created" datetime-picker="{{dateformat}}" ng-model="vm.device.created" is-open="vm.datePickerOpenStatus.created"
-                      />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.signedIn" for="field_signedIn">Signed In</label>
-            <input type="text" class="form-control" name="signedIn" id="field_signedIn"
-                    ng-model="vm.device.signedIn"
                      />
         </div>
         <div class="form-group">
@@ -72,9 +56,53 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="gatewayApp.device.os" for="field_os">Os</label>
-            <input type="text" class="form-control" name="os" id="field_os"
-                    ng-model="vm.device.os"
+            <label class="control-label" data-translate="gatewayApp.device.gcmToken" for="field_gcmToken">Gcm Token</label>
+            <input type="text" class="form-control" name="gcmToken" id="field_gcmToken"
+                    ng-model="vm.device.gcmToken"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.created" for="field_created">Created</label>
+                <div class="input-group">
+                    <input id="field_created" type="text" class="form-control" name="created" uib-datepicker-popup="{{dateformat}}" ng-model="vm.device.created" is-open="vm.datePickerOpenStatus.created"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.signedIn" for="field_signedIn">Signed In</label>
+                <div class="input-group">
+                    <input id="field_signedIn" type="text" class="form-control" name="signedIn" uib-datepicker-popup="{{dateformat}}" ng-model="vm.device.signedIn" is-open="vm.datePickerOpenStatus.signedIn"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('signedIn')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.display" for="field_display">Display</label>
+            <input type="text" class="form-control" name="display" id="field_display"
+                    ng-model="vm.device.display"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.product" for="field_product">Product</label>
+            <input type="text" class="form-control" name="product" id="field_product"
+                    ng-model="vm.device.product"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.serial" for="field_serial">Serial</label>
+            <input type="text" class="form-control" name="serial" id="field_serial"
+                    ng-model="vm.device.serial"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="gatewayApp.device.sdkVersion" for="field_sdkVersion">Sdk Version</label>
+            <input type="text" class="form-control" name="sdkVersion" id="field_sdkVersion"
+                    ng-model="vm.device.sdkVersion"
                      />
         </div>
 

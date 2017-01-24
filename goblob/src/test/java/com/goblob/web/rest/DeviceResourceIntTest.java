@@ -23,13 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-import static com.goblob.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -44,26 +41,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = {GoblobApp.class, SecurityBeanOverrideConfiguration.class})
 public class DeviceResourceIntTest {
 
+    private static final String DEFAULT_OS = "AAAAAAAAAA";
+    private static final String UPDATED_OS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_OS_VERSION = "AAAAAAAAAA";
+    private static final String UPDATED_OS_VERSION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DEVICE = "AAAAAAAAAA";
+    private static final String UPDATED_DEVICE = "BBBBBBBBBB";
+
     private static final String DEFAULT_MODEL = "AAAAAAAAAA";
     private static final String UPDATED_MODEL = "BBBBBBBBBB";
 
     private static final String DEFAULT_MANUFACTURER = "AAAAAAAAAA";
     private static final String UPDATED_MANUFACTURER = "BBBBBBBBBB";
-
-    private static final String DEFAULT_DISPLAY = "AAAAAAAAAA";
-    private static final String UPDATED_DISPLAY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_GCM_TOKEN = "AAAAAAAAAA";
-    private static final String UPDATED_GCM_TOKEN = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ANDROID_VERSION = "AAAAAAAAAA";
-    private static final String UPDATED_ANDROID_VERSION = "BBBBBBBBBB";
-
-    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-
-    private static final String DEFAULT_SIGNED_IN = "AAAAAAAAAA";
-    private static final String UPDATED_SIGNED_IN = "BBBBBBBBBB";
 
     private static final String DEFAULT_APP_VERSION = "AAAAAAAAAA";
     private static final String UPDATED_APP_VERSION = "BBBBBBBBBB";
@@ -71,8 +62,26 @@ public class DeviceResourceIntTest {
     private static final String DEFAULT_DEVICE_ID = "AAAAAAAAAA";
     private static final String UPDATED_DEVICE_ID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_OS = "AAAAAAAAAA";
-    private static final String UPDATED_OS = "BBBBBBBBBB";
+    private static final String DEFAULT_GCM_TOKEN = "AAAAAAAAAA";
+    private static final String UPDATED_GCM_TOKEN = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_SIGNED_IN = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_SIGNED_IN = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_DISPLAY = "AAAAAAAAAA";
+    private static final String UPDATED_DISPLAY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PRODUCT = "AAAAAAAAAA";
+    private static final String UPDATED_PRODUCT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SERIAL = "AAAAAAAAAA";
+    private static final String UPDATED_SERIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SDK_VERSION = "AAAAAAAAAA";
+    private static final String UPDATED_SDK_VERSION = "BBBBBBBBBB";
 
     @Inject
     private DeviceRepository deviceRepository;
@@ -108,16 +117,20 @@ public class DeviceResourceIntTest {
      */
     public static Device createEntity(EntityManager em) {
         Device device = new Device()
+                .os(DEFAULT_OS)
+                .osVersion(DEFAULT_OS_VERSION)
+                .device(DEFAULT_DEVICE)
                 .model(DEFAULT_MODEL)
                 .manufacturer(DEFAULT_MANUFACTURER)
-                .display(DEFAULT_DISPLAY)
-                .gcmToken(DEFAULT_GCM_TOKEN)
-                .androidVersion(DEFAULT_ANDROID_VERSION)
-                .created(DEFAULT_CREATED)
-                .signedIn(DEFAULT_SIGNED_IN)
                 .appVersion(DEFAULT_APP_VERSION)
                 .deviceId(DEFAULT_DEVICE_ID)
-                .os(DEFAULT_OS);
+                .gcmToken(DEFAULT_GCM_TOKEN)
+                .created(DEFAULT_CREATED)
+                .signedIn(DEFAULT_SIGNED_IN)
+                .display(DEFAULT_DISPLAY)
+                .product(DEFAULT_PRODUCT)
+                .serial(DEFAULT_SERIAL)
+                .sdkVersion(DEFAULT_SDK_VERSION);
         return device;
     }
 
@@ -142,16 +155,20 @@ public class DeviceResourceIntTest {
         List<Device> deviceList = deviceRepository.findAll();
         assertThat(deviceList).hasSize(databaseSizeBeforeCreate + 1);
         Device testDevice = deviceList.get(deviceList.size() - 1);
+        assertThat(testDevice.getOs()).isEqualTo(DEFAULT_OS);
+        assertThat(testDevice.getOsVersion()).isEqualTo(DEFAULT_OS_VERSION);
+        assertThat(testDevice.getDevice()).isEqualTo(DEFAULT_DEVICE);
         assertThat(testDevice.getModel()).isEqualTo(DEFAULT_MODEL);
         assertThat(testDevice.getManufacturer()).isEqualTo(DEFAULT_MANUFACTURER);
-        assertThat(testDevice.getDisplay()).isEqualTo(DEFAULT_DISPLAY);
-        assertThat(testDevice.getGcmToken()).isEqualTo(DEFAULT_GCM_TOKEN);
-        assertThat(testDevice.getAndroidVersion()).isEqualTo(DEFAULT_ANDROID_VERSION);
-        assertThat(testDevice.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testDevice.getSignedIn()).isEqualTo(DEFAULT_SIGNED_IN);
         assertThat(testDevice.getAppVersion()).isEqualTo(DEFAULT_APP_VERSION);
         assertThat(testDevice.getDeviceId()).isEqualTo(DEFAULT_DEVICE_ID);
-        assertThat(testDevice.getOs()).isEqualTo(DEFAULT_OS);
+        assertThat(testDevice.getGcmToken()).isEqualTo(DEFAULT_GCM_TOKEN);
+        assertThat(testDevice.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testDevice.getSignedIn()).isEqualTo(DEFAULT_SIGNED_IN);
+        assertThat(testDevice.getDisplay()).isEqualTo(DEFAULT_DISPLAY);
+        assertThat(testDevice.getProduct()).isEqualTo(DEFAULT_PRODUCT);
+        assertThat(testDevice.getSerial()).isEqualTo(DEFAULT_SERIAL);
+        assertThat(testDevice.getSdkVersion()).isEqualTo(DEFAULT_SDK_VERSION);
     }
 
     @Test
@@ -185,16 +202,20 @@ public class DeviceResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(device.getId().intValue())))
+            .andExpect(jsonPath("$.[*].os").value(hasItem(DEFAULT_OS.toString())))
+            .andExpect(jsonPath("$.[*].osVersion").value(hasItem(DEFAULT_OS_VERSION.toString())))
+            .andExpect(jsonPath("$.[*].device").value(hasItem(DEFAULT_DEVICE.toString())))
             .andExpect(jsonPath("$.[*].model").value(hasItem(DEFAULT_MODEL.toString())))
             .andExpect(jsonPath("$.[*].manufacturer").value(hasItem(DEFAULT_MANUFACTURER.toString())))
-            .andExpect(jsonPath("$.[*].display").value(hasItem(DEFAULT_DISPLAY.toString())))
-            .andExpect(jsonPath("$.[*].gcmToken").value(hasItem(DEFAULT_GCM_TOKEN.toString())))
-            .andExpect(jsonPath("$.[*].androidVersion").value(hasItem(DEFAULT_ANDROID_VERSION.toString())))
-            .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
-            .andExpect(jsonPath("$.[*].signedIn").value(hasItem(DEFAULT_SIGNED_IN.toString())))
             .andExpect(jsonPath("$.[*].appVersion").value(hasItem(DEFAULT_APP_VERSION.toString())))
             .andExpect(jsonPath("$.[*].deviceId").value(hasItem(DEFAULT_DEVICE_ID.toString())))
-            .andExpect(jsonPath("$.[*].os").value(hasItem(DEFAULT_OS.toString())));
+            .andExpect(jsonPath("$.[*].gcmToken").value(hasItem(DEFAULT_GCM_TOKEN.toString())))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED.toString())))
+            .andExpect(jsonPath("$.[*].signedIn").value(hasItem(DEFAULT_SIGNED_IN.toString())))
+            .andExpect(jsonPath("$.[*].display").value(hasItem(DEFAULT_DISPLAY.toString())))
+            .andExpect(jsonPath("$.[*].product").value(hasItem(DEFAULT_PRODUCT.toString())))
+            .andExpect(jsonPath("$.[*].serial").value(hasItem(DEFAULT_SERIAL.toString())))
+            .andExpect(jsonPath("$.[*].sdkVersion").value(hasItem(DEFAULT_SDK_VERSION.toString())));
     }
 
     @Test
@@ -208,16 +229,20 @@ public class DeviceResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(device.getId().intValue()))
+            .andExpect(jsonPath("$.os").value(DEFAULT_OS.toString()))
+            .andExpect(jsonPath("$.osVersion").value(DEFAULT_OS_VERSION.toString()))
+            .andExpect(jsonPath("$.device").value(DEFAULT_DEVICE.toString()))
             .andExpect(jsonPath("$.model").value(DEFAULT_MODEL.toString()))
             .andExpect(jsonPath("$.manufacturer").value(DEFAULT_MANUFACTURER.toString()))
-            .andExpect(jsonPath("$.display").value(DEFAULT_DISPLAY.toString()))
-            .andExpect(jsonPath("$.gcmToken").value(DEFAULT_GCM_TOKEN.toString()))
-            .andExpect(jsonPath("$.androidVersion").value(DEFAULT_ANDROID_VERSION.toString()))
-            .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
-            .andExpect(jsonPath("$.signedIn").value(DEFAULT_SIGNED_IN.toString()))
             .andExpect(jsonPath("$.appVersion").value(DEFAULT_APP_VERSION.toString()))
             .andExpect(jsonPath("$.deviceId").value(DEFAULT_DEVICE_ID.toString()))
-            .andExpect(jsonPath("$.os").value(DEFAULT_OS.toString()));
+            .andExpect(jsonPath("$.gcmToken").value(DEFAULT_GCM_TOKEN.toString()))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED.toString()))
+            .andExpect(jsonPath("$.signedIn").value(DEFAULT_SIGNED_IN.toString()))
+            .andExpect(jsonPath("$.display").value(DEFAULT_DISPLAY.toString()))
+            .andExpect(jsonPath("$.product").value(DEFAULT_PRODUCT.toString()))
+            .andExpect(jsonPath("$.serial").value(DEFAULT_SERIAL.toString()))
+            .andExpect(jsonPath("$.sdkVersion").value(DEFAULT_SDK_VERSION.toString()));
     }
 
     @Test
@@ -238,16 +263,20 @@ public class DeviceResourceIntTest {
         // Update the device
         Device updatedDevice = deviceRepository.findOne(device.getId());
         updatedDevice
+                .os(UPDATED_OS)
+                .osVersion(UPDATED_OS_VERSION)
+                .device(UPDATED_DEVICE)
                 .model(UPDATED_MODEL)
                 .manufacturer(UPDATED_MANUFACTURER)
-                .display(UPDATED_DISPLAY)
-                .gcmToken(UPDATED_GCM_TOKEN)
-                .androidVersion(UPDATED_ANDROID_VERSION)
-                .created(UPDATED_CREATED)
-                .signedIn(UPDATED_SIGNED_IN)
                 .appVersion(UPDATED_APP_VERSION)
                 .deviceId(UPDATED_DEVICE_ID)
-                .os(UPDATED_OS);
+                .gcmToken(UPDATED_GCM_TOKEN)
+                .created(UPDATED_CREATED)
+                .signedIn(UPDATED_SIGNED_IN)
+                .display(UPDATED_DISPLAY)
+                .product(UPDATED_PRODUCT)
+                .serial(UPDATED_SERIAL)
+                .sdkVersion(UPDATED_SDK_VERSION);
 
         restDeviceMockMvc.perform(put("/api/devices")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -258,16 +287,20 @@ public class DeviceResourceIntTest {
         List<Device> deviceList = deviceRepository.findAll();
         assertThat(deviceList).hasSize(databaseSizeBeforeUpdate);
         Device testDevice = deviceList.get(deviceList.size() - 1);
+        assertThat(testDevice.getOs()).isEqualTo(UPDATED_OS);
+        assertThat(testDevice.getOsVersion()).isEqualTo(UPDATED_OS_VERSION);
+        assertThat(testDevice.getDevice()).isEqualTo(UPDATED_DEVICE);
         assertThat(testDevice.getModel()).isEqualTo(UPDATED_MODEL);
         assertThat(testDevice.getManufacturer()).isEqualTo(UPDATED_MANUFACTURER);
-        assertThat(testDevice.getDisplay()).isEqualTo(UPDATED_DISPLAY);
-        assertThat(testDevice.getGcmToken()).isEqualTo(UPDATED_GCM_TOKEN);
-        assertThat(testDevice.getAndroidVersion()).isEqualTo(UPDATED_ANDROID_VERSION);
-        assertThat(testDevice.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testDevice.getSignedIn()).isEqualTo(UPDATED_SIGNED_IN);
         assertThat(testDevice.getAppVersion()).isEqualTo(UPDATED_APP_VERSION);
         assertThat(testDevice.getDeviceId()).isEqualTo(UPDATED_DEVICE_ID);
-        assertThat(testDevice.getOs()).isEqualTo(UPDATED_OS);
+        assertThat(testDevice.getGcmToken()).isEqualTo(UPDATED_GCM_TOKEN);
+        assertThat(testDevice.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testDevice.getSignedIn()).isEqualTo(UPDATED_SIGNED_IN);
+        assertThat(testDevice.getDisplay()).isEqualTo(UPDATED_DISPLAY);
+        assertThat(testDevice.getProduct()).isEqualTo(UPDATED_PRODUCT);
+        assertThat(testDevice.getSerial()).isEqualTo(UPDATED_SERIAL);
+        assertThat(testDevice.getSdkVersion()).isEqualTo(UPDATED_SDK_VERSION);
     }
 
     @Test

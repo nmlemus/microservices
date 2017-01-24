@@ -18,7 +18,7 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "gradle",
     "enableSocialSignIn": false,
-    "jwtSecretKey": "e4f35b03c0a05fe207c2ca6c0d4890258e6465f7",
+    "jwtSecretKey": "34f05be9f4c0cfb1baa31e76504af0fb2c7daa49",
     "enableTranslation": true,
     "applicationType": "microservice",
     "testFrameworks": [
