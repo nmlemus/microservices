@@ -6,14 +6,11 @@ thumbor:
   ports:
     - "80:8000" # thumbor port
   environment:
-    - STORAGE=thumbor.storages.mixed_storage
-    - REDIS_STORAGE_SERVER_HOST=redis
-    - REDIS_STORAGE_SERVER_PORT=6379
-    - REDIS_STORAGE_SERVER_DB=0
-    - MIXED_STORAGE_DETECTOR_STORAGE=tc_redis.storages.redis_storage
-    - MIXED_STORAGE_FILE_STORAGE = 'thumbor.storages.file_storage'
-    - MIXED_STORAGE_CRYPTO_STORAGE = 'thumbor.storages.redis_storage'
-    - MIXED_STORAGE_DETECTOR_STORAGE = 'thumbor.storages.redis_storage'
+    - STORAGE=tc_mongodb.storages.mongo_storage
+    - MONGO_STORAGE_SERVER_HOST=localhost
+    - MONGO_STORAGE_SERVER_PORT=27017 
+    - MONGO_STORAGE_SERVER_DB=thumbor1 
+    - MONGO_STORAGE_SERVER_COLLECTION=images2
     - FILE_STORAGE_ROOT_PATH = '/data'
     - UPLOAD_MAX_SIZE=1000000
     - UPLOAD_ENABLED=True
